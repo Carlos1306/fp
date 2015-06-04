@@ -7,14 +7,22 @@ public class Calculator {
 	 * este metodo calcula el seno de un angulo
 	 */
 	static Double sin(double n) {
-		return null;
+		return Math.rint(Math.sin(Math.toRadians(n))*10)/10;
 	}
 
 	/*
 	 * Escribir todos los números del number al 0 de step en step.
 	 */
 	static int[] stepThisNumber(int number, int step) {
-		return null;
+		int[] arrayNum=null;
+		int cont=0;
+		while(number > step){
+			number -= step;
+			arrayNum[cont]=number;
+			cont++;
+		}
+		System.out.println(arrayNum);
+		return arrayNum;
 	}
 
 	/*
@@ -22,7 +30,18 @@ public class Calculator {
 	 * divisores que tiene.
 	 */
 	static int[] divisors(int n) {
-		return null;
+		int[] arrayDiv=null;
+		if(n!=0){
+			int contArray=0;
+			for (int i=0;i<n;i++){
+				if(n%i==0){
+					
+				}
+			}
+		
+		}
+		
+		return arrayDiv;
 	}
 	
 	/*
@@ -31,7 +50,14 @@ public class Calculator {
 	 * función debe devolver el número de aciertos.
 	 */
 	static Integer checkMyBet(List<Integer> apuesta, List<Integer> aciertos) {
-		return null;
+		Integer contAciertos=0;
+		if(apuesta!=null && aciertos!=null){
+			for(int cont1=0;cont1<aciertos.size();cont1++){
+				if(apuesta.get(cont1).equals(aciertos.get(cont1)))contAciertos++;
+			}
+		}
+		return contAciertos;
+		
 	}
 
 	/*
@@ -39,7 +65,42 @@ public class Calculator {
 	 * mostrar: cincuenta y seis
 	 */
 	static String speakToMe(int n) {
-		return null;
+		String [] arrayUnidades = {"Cero","Uno","Dos","Tres","Cuatro","Cinco","Seis","Siete","Ocho","Nueve"};
+		String [] arrayDecenas = {"Veinte","Treinta","Cuarenta","Cincuenta","Sesenta","Setenta","Ochenta","Noventa"};
+		String [] arrayDecenasAux = {"Diez","Once","Doce","Trece","Catorce","Quince"};
+		String resp = null;
+		int decenas = n/10;
+		int unidades = n%10;
+		switch(decenas){
+			case 0: resp = arrayUnidades[unidades];
+					break;
+			case 1: 
+					if(unidades < 6){
+						resp = arrayDecenasAux[unidades];
+					}else if(unidades >= 6){
+						resp = "Dieci" + arrayUnidades[unidades];
+					};
+					break;
+			case 2:
+					switch(unidades){
+						case 0: resp = arrayDecenas[decenas-2];
+								break;
+						default: resp = "Veinti" + arrayUnidades[unidades].toLowerCase();
+								break;
+					}
+					break;
+			case 3: case 4: case 5: case 6: case 7: case 8: case 9:
+					switch(unidades){
+						case 0: resp = arrayDecenas[decenas-2];
+								break;
+						default: resp = arrayDecenas[decenas-2] + " y " + arrayUnidades[unidades].toLowerCase();
+								break;
+					}
+					break;
+			default: resp = "Numero no valido";
+					break;
+		}
+		return resp;
 	}
 	
 	/*
